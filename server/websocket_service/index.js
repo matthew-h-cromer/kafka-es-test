@@ -41,7 +41,7 @@ wss.on('connection', function connection(websocket) {
 
   websocket.on('message', function (string_msg) {
     const msg = JSON.parse(string_msg);
-    console.log('Websocket[' + id + ']: Received a message from ' + msg.origin);
+    console.log('Websocket[' + id + ']: Received message:');
     console.log(msg);
     handleEvent(msg);
   });
