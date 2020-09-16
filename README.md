@@ -11,7 +11,9 @@ To run:
 - In one terminal, "npm run server"
 - In another terminal, "npm run client"* you want to keep them separated because the react app client will overwrite other outputs
 
-Here is an example of server output:[websocket] Websocket[d8ef4513-e39d-4e4b-930c-f2f6db26c84e]: Received a message from undefined
+Here is an example of server output:
+```console
+[websocket] Websocket[d8ef4513-e39d-4e4b-930c-f2f6db26c84e]: Received a message from undefined
 [websocket] {
 [websocket]   topic: 'test-topic',
 [websocket]   event: 'message',
@@ -35,3 +37,4 @@ Here is an example of server output:[websocket] Websocket[d8ef4513-e39d-4e4b-930
 [websocket] }
 [websocket] Broadcasting msg:
 [websocket] {"event":"message","data":{"message":"Client button was clicked!"}}
+```
