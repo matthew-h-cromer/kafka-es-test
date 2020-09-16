@@ -13,7 +13,7 @@ To run:
 
 Here is an example of server output:
 ```console
-[websocket] Websocket[d8ef4513-e39d-4e4b-930c-f2f6db26c84e]: Received a message from undefined
+[websocket] Websocket[d8ef4513-e39d-4e4b-930c-f2f6db26c84e]: Received a message
 [websocket] {
 [websocket]   topic: 'test-topic',
 [websocket]   event: 'message',
