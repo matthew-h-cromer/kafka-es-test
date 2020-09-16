@@ -1,0 +1,15 @@
+{
+  "name": "mcromer-kafka-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "npm start --prefix client",
+    "server": "npm run docker_up --prefix server -d && concurrently \"npm:test_service --prefix server\" \"npm:websocket --prefix server\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.3.0"
+  }
+}

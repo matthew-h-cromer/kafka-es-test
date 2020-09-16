@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docker_up": "docker-compose -f kafka/docker-compose.yml up -d",
+    "docker_down": "docker-compose down",
+    "test_service": "nodemon test_service/index.js",
+    "websocket": "nodemon websocket_service/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "kafkajs": "^1.13.0",
+    "uuid": "^8.3.0",
+    "ws": "^7.3.1"
+  }
+}
