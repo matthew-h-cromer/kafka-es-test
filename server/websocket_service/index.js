@@ -24,7 +24,7 @@ const run = async () => {
         event,
         data,
       });
-      broadcast(JSON.stringify({ event, data }));
+      broadcast({ event, data });
     },
   });
 };
@@ -37,6 +37,7 @@ const wss = new WebSocket.Server({ port: 8080 });
 let connections = {};
 
 wss.on('connection', function connection(websocket) {
+  console.log(websocket);
   const id = uuid();
 
   websocket.on('message', function (string_msg) {
