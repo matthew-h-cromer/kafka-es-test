@@ -29,7 +29,7 @@ const ButtonFollower = styled.div`
   left: 0;
   width: 5px;
   height: 57px;
-  background-color: #ff6666;
+  background-color: ${props => (props.show ? '#ff6666' : 'rgba(0, 0, 0, 0)')};
   border-radius: 0 3px 3px 0;
 `;
 
@@ -37,6 +37,15 @@ class NavButtonGroup extends React.Component {
   state = {
     selectedButton: 0,
   };
+
+  componentDidMount() {
+    history.listen(location => {
+      const navRoutes = navButtons.map(navButton => navButton.route);
+      if (!navRoutes.includes(location.pathname)) {
+        this.setState({ selectedButton: null });
+      }
+    });
+  }
 
   onClick = ({ buttonIndex, route }) => {
     this.setState({ selectedButton: buttonIndex });
@@ -52,7 +61,7 @@ class NavButtonGroup extends React.Component {
   render() {
     return (
       <div>
-        <ButtonFollower id='ButtonFollower' />
+        <ButtonFollower id='ButtonFollower' show={this.state.selectedButton !== null} />
         {navButtons.map((navButton, index) => (
           <NavButton
             key={'NavButton' + index}

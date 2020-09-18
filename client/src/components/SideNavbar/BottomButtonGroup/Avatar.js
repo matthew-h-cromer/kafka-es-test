@@ -23,9 +23,9 @@ const Button = styled.button`
   }
 `;
 
-export default function Avatar() {
+export default function Avatar({ onClick }) {
   return (
-    <Button>
+    <Button onClick={onClick}>
       <MUI_Avatar>MC</MUI_Avatar>
     </Button>
   );

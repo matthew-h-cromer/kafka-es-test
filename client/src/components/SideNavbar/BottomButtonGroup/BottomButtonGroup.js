@@ -1,5 +1,8 @@
 import React from 'react';
 
+//History
+import history from '../../Routes/history';
+
 // Styled Components
 import styled from 'styled-components';
 
@@ -11,8 +14,8 @@ import SmallNavButton from './SmallNavButton';
 import Avatar from './Avatar';
 
 const smallNavButtons = [
-  { title: 'System Messages', icon: () => <MessageSquare /> },
-  { title: 'Settings', icon: () => <Settings /> },
+  { title: 'System Messages', route: '/system-messages', icon: () => <MessageSquare /> },
+  { title: 'Settings', route: '/settings', icon: () => <Settings /> },
 ];
 
 const Container = styled.div`
@@ -20,12 +23,20 @@ const Container = styled.div`
 `;
 
 export default function BottomButtonGroup() {
+  const onClick = ({ route }) => {
+    history.push(route);
+  };
+
   return (
     <Container>
-      {smallNavButtons.map(smallNavButton => (
-        <SmallNavButton data={smallNavButton} />
+      {smallNavButtons.map((smallNavButton, index) => (
+        <SmallNavButton
+          key={'SmallNavButton' + index}
+          data={smallNavButton}
+          onClick={() => onClick({ route: smallNavButton.route })}
+        />
       ))}
-      <Avatar />
+      <Avatar onClick={() => onClick({ route: '/account' })} />
     </Container>
   );
 }

@@ -17,9 +17,9 @@ const Button = styled.button`
   }
 `;
 
-export default function SmallNavButton({ data }) {
+export default function SmallNavButton({ data, onClick }) {
   return (
-    <Button>
+    <Button onClick={onClick}>
       <data.icon />
     </Button>
   );

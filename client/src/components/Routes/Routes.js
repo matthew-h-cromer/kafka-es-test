@@ -26,6 +26,15 @@ export default function Routes() {
         <Route path='/workstations'>
           <PageTemplate title='Workstations' />
         </Route>
+        <Route path='/system-messages'>
+          <PageTemplate title='System Messages' />
+        </Route>
+        <Route path='/settings'>
+          <PageTemplate title='Settings' />
+        </Route>
+        <Route path='/account'>
+          <PageTemplate title='Account' />
+        </Route>
         <Route path='/' component={() => <Redirect to='/dashboard'></Redirect>} />
       </Switch>
     </Router>
