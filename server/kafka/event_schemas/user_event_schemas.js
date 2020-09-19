@@ -11,6 +11,7 @@ const user_event_schemas = [
     browser: {
       ipAddress: '',
       version: '',
+      //...
     },
   },
   {
@@ -22,10 +23,31 @@ const user_event_schemas = [
       lastName: '',
       //...
     },
+    browser: {
+      ipAddress: '',
+      version: '',
+      //...
+    },
   },
   {
     topic: 'user_{user_id}',
     event: 'websocket_closed',
+    user: {
+      _id: '',
+      firstName: '',
+      lastName: '',
+      //...
+    },
+    browser: {
+      ipAddress: '',
+      version: '',
+      //...
+    },
+  },
+  {
+    topic: 'user_{user_id}',
+    event: 'page_navigation',
+    route: '/...',
     user: {
       _id: '',
       firstName: '',

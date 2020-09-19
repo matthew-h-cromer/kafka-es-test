@@ -6,8 +6,8 @@
   "scripts": {
     "docker_up": "docker-compose -f kafka/docker-compose.yml up -d",
     "docker_down": "docker-compose down",
-    "test_service": "nodemon test_service/index.js",
-    "websocket": "nodemon websocket_service/index.js"
+    "user_service": "nodemon user_service/user_service.js",
+    "websocket_service": "nodemon websocket_service/websocket_service.js"
   },
   "author": "",
   "license": "ISC",

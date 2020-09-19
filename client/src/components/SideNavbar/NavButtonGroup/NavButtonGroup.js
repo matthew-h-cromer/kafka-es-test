@@ -1,17 +1,14 @@
 import React from 'react';
-
-//History
+// Websocket
+import { ws } from '../../../websocket_handler';
+// History
 import history from '../../Routes/history';
-
 // Animations
 import anime from 'animejs';
-
-//Styled components
+// Styled components
 import styled from 'styled-components';
-
 // Feather icons
 import { Home, Tag, Star, List, Monitor } from 'react-feather';
-
 // Custom components
 import NavButton from './NavButton';
 
@@ -48,14 +45,24 @@ class NavButtonGroup extends React.Component {
   }
 
   onClick = ({ buttonIndex, route }) => {
+    // Set current selected button
     this.setState({ selectedButton: buttonIndex });
+    // Animate the little bar that moves
     anime({
       targets: '#ButtonFollower',
       top: 20 + buttonIndex * 77,
       easing: 'easeOutElastic(1, 2)',
       duration: 500,
     });
+    // Go to the new route
     history.push(route);
+    // Publish the event to Kafka
+    const event = {
+      topic: 'user_0',
+      event: 'page_navigation',
+      data: { message: 'User navigated to "' + route + '"' },
+    };
+    ws.send(JSON.stringify(event));
   };
 
   render() {

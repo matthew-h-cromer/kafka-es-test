@@ -1,14 +1,12 @@
 import React from 'react';
-
-//History
+// Websocket
+import { ws } from '../../../websocket_handler';
+// History
 import history from '../../Routes/history';
-
 // Styled Components
 import styled from 'styled-components';
-
 // Feather icons
 import { Settings, MessageSquare } from 'react-feather';
-
 // Custom Components
 import SmallNavButton from './SmallNavButton';
 import Avatar from './Avatar';
@@ -25,6 +23,13 @@ const Container = styled.div`
 export default function BottomButtonGroup() {
   const onClick = ({ route }) => {
     history.push(route);
+    // Publish the event to Kafka
+    const event = {
+      topic: 'user_0',
+      event: 'page_navigation',
+      data: { message: 'User navigated to "' + route + '"' },
+    };
+    ws.send(JSON.stringify(event));
   };
 
   return (

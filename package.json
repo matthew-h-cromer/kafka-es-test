@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "client": "npm start --prefix client",
-    "server": "npm run docker_up --prefix server -d && concurrently \"npm:test_service --prefix server\" \"npm:websocket --prefix server\""
+    "server": "npm run docker_up --prefix server -d && concurrently \"npm:user_service --prefix server\" \"npm:websocket_service --prefix server\""
   },
   "author": "",
   "license": "ISC",

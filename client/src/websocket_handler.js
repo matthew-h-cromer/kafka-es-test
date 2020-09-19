@@ -33,8 +33,9 @@ async function connectWebsocket() {
 }
 
 const handleWebsocketMessage = ({ ws, string_msg }) => {
-  message.info('Received message from server');
-  //const msg = JSON.parse(string_msg);
+  const msg = JSON.parse(string_msg);
+  message.info('Received message from server: ' + msg.data.message);
+  console.log(msg);
 };
 
 connectWebsocket();
