@@ -24,7 +24,7 @@ const Title = styled.div`
 const PageContent = styled.div`
   margin: 0 30px;
   height: calc(100vh - 30px - 56px - 30px);
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: #f3f3f3;
 `;
 
