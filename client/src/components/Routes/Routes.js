@@ -6,6 +6,7 @@ import history from './history';
 
 // Pages
 import PageTemplate from '../PageTemplate';
+import WorkOrdersPage from '../pages/work-orders/WorkOrdersPage';
 
 export default function Routes() {
   return (
@@ -21,7 +22,7 @@ export default function Routes() {
           <PageTemplate title='Sales Orders' />
         </Route>
         <Route path='/work-orders'>
-          <PageTemplate title='Work Orders' />
+          <WorkOrdersPage title='Work Orders' />
         </Route>
         <Route path='/workstations'>
           <PageTemplate title='Workstations' />
