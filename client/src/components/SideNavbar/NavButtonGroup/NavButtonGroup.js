@@ -8,14 +8,16 @@ import anime from 'animejs';
 // Styled components
 import styled from 'styled-components';
 // Feather icons
-import { Home, Tag, Star, List, Monitor } from 'react-feather';
+import { Home, Tag, List, Monitor } from 'react-feather';
+// Material UI
+import AttachMoneyRounded from '@material-ui/icons/AttachMoneyRounded';
 // Custom components
 import NavButton from './NavButton';
 
 const navButtons = [
   { title: 'Dashboard', route: '/dashboard', icon: () => <Home /> },
   { title: 'Products', route: '/products', icon: () => <Tag /> },
-  { title: 'Sales Orders', route: '/sales-orders', icon: () => <Star /> },
+  { title: 'Sales Orders', route: '/sales-orders', icon: () => <AttachMoneyRounded /> },
   { title: 'Work Orders', route: '/work-orders', icon: () => <List /> },
   { title: 'Workstations', route: '/workstations', icon: () => <Monitor /> },
 ];
