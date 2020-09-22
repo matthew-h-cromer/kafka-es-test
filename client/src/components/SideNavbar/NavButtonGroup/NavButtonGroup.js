@@ -1,6 +1,4 @@
 import React from 'react';
-// Websocket
-import { ws } from '../../../websocket_handler';
 // History
 import history from '../../Routes/history';
 // Animations
@@ -38,33 +36,37 @@ class NavButtonGroup extends React.Component {
   };
 
   componentDidMount() {
+    // React to initial route
+    const navRoutes = navButtons.map(navButton => navButton.route);
+    if (!navRoutes.includes(history.location.pathname)) {
+      this.setState({ selectedButton: null });
+    }
+
+    // Listen to subsequent routes
     history.listen(location => {
+      console.log(location.pathname);
       const navRoutes = navButtons.map(navButton => navButton.route);
       if (!navRoutes.includes(location.pathname)) {
         this.setState({ selectedButton: null });
+      } else {
+        const newIndex = navRoutes.findIndex(route => route === location.pathname);
+        console.log('newIndex: ' + newIndex);
+        this.setState({
+          selectedButton: newIndex,
+        });
+        anime({
+          targets: '#ButtonFollower',
+          top: 20 + newIndex * 77,
+          easing: 'easeOutElastic(1, 2)',
+          duration: 500,
+        });
       }
     });
   }
 
-  onClick = ({ buttonIndex, route }) => {
-    // Set current selected button
-    this.setState({ selectedButton: buttonIndex });
-    // Animate the little bar that moves
-    anime({
-      targets: '#ButtonFollower',
-      top: 20 + buttonIndex * 77,
-      easing: 'easeOutElastic(1, 2)',
-      duration: 500,
-    });
+  onClick = ({ route }) => {
     // Go to the new route
     history.push(route);
-    // Publish the event to Kafka
-    const event = {
-      topic: 'user_0',
-      event: 'page_navigation',
-      data: { message: 'User navigated to "' + route + '"' },
-    };
-    ws.send(JSON.stringify(event));
   };
 
   render() {
@@ -77,7 +79,7 @@ class NavButtonGroup extends React.Component {
             index={index}
             data={navButton}
             selected={this.state.selectedButton === index}
-            onClick={() => this.onClick({ buttonIndex: index, route: navButton.route })}
+            onClick={() => this.onClick({ route: navButton.route })}
           />
         ))}
       </div>

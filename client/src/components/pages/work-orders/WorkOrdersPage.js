@@ -53,7 +53,6 @@ export default function WorkOrdersPage({ title }) {
           columns={columns}
           dataSource={data}
           bordered
-          tableLayout='fixed'
           rowSelection={{ fixed: true }}
           //title={() => 'Work Orders'}
           //footer={() => 'Footer'}
